@@ -57,7 +57,10 @@ int main(int argc, char const *argv[])
     bzero(buffer, 256);
     n = read(newsockfd, buffer, 255);
     if (n < 0)
+    {
       error("Error on reading.");
+    }
+
     printf("Client: %s\n", buffer);
     bzero(buffer, 255);
     fgets(buffer, 255, stdin);
@@ -72,8 +75,8 @@ int main(int argc, char const *argv[])
     {
       break;
     }
-    close(newsockfd);
-    close(sockfd);
   }
+  close(newsockfd);
+  close(sockfd);
   return 0;
 }
